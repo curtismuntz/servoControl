@@ -6,30 +6,25 @@
  * @author  David Larribas <dlarribas@gmail.com>
  * @version 0.0.1
  *
- * @section LICENSE
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License as
- * published by the Free Software Foundation; either version 2 of
- * the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * General Public License for more details at
- * http://www.gnu.org/copyleft/gpl.html
  *
  * @section DESCRIPTION
- *
+ * This program is woo like woo.
  * 
  */
+#include <Wire.h>
 
+
+// include the Adafruit libraries if using seven seg display
+#include "Adafruit_LEDBackpack.h"
+#include "Adafruit_GFX.h"
+
+Adafruit_7segment matrix = Adafruit_7segment();
 
 
 #define PIN_ENCODER_A 0       // DIGITAL PIN 0
 #define PIN_ENCODER_B 2       // DIGITAL PIN 2
 #define PINx  PIND            // ask david for the pin letter... otherwise i'll set it to C for no reason... -curtis
-#define GEAR_RATIO 0.9375     // 16:1 gear ratio at 24 pulses per rotation gives 1 pulse is 0.9375 degrees output rotation
+#define GEAR_RATIO 0.9375     // 250:1 gear ratio at 24 pulses per rotation gives 1 pulse is 0.9375 degrees output rotation
 #define UNGEAR_RATIO 15       // 24 pulses per rotation on encoder yeilds 15 degree angle resolution
 #define PWM_A 3               // Speed control 
 #define MOTORA_IN1 9          // motor A connected between A01 and A02
@@ -75,7 +70,10 @@ void setup()
   Serial.println("Initialization complete.....");
 }
 
-
+/**
+ * gets encoder values 
+ * @return Returns current encoder value  
+ */
 int getEncoder()
 {  
   int8_t enc_action = 0; // 1 or -1 if moved, sign is direction
@@ -156,7 +154,7 @@ int getEncoder()
 }
 
 /**
- * Calculates the output angle
+ * Calculates the output angle based on global variable set gear ratio
  *
  * @return Returns the calculated degree (i* GEAR_RATIO)
  */
@@ -166,7 +164,9 @@ float outputAngleCalc()
   degree = i * GEAR_RATIO;
   return degree;
 }
-
+/**
+ * Sets motor speed
+ */
 void move(int motor, int speed, int direction)
 {
 //Move specific motor at speed and direction
@@ -192,10 +192,7 @@ void move(int motor, int speed, int direction)
 }
 
 /**
-    Returns the volume of a sphere with the specified radius.
-
-    @param radius The radius of the circle.
-    @return The volume of the sphere.
+    stops motor
 */
 void stop(){
 //enable standby  
