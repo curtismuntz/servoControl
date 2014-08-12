@@ -4,8 +4,8 @@ Va=9; %volts
 J = 0.01; %Estimated rotational inertia
 b = 0.1; %Estimated rotational friction
 K = 0.01; %Estimated Motor Constant
-R = .921; %Ohm
-L = 590e-6;%Henry
+R = .921; % Measured armature resistance
+L = 590e-6;% Measured armature inductance
 Ts=4e-3; %Seconds (proven through arduino's micros() function)
 
 %Motor transfer function:
