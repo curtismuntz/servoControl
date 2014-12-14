@@ -1,0 +1,10 @@
+ <launch>
+
+   <!-- uvc_camera is our camera driver -->
+  <node name="camera" pkg="uvc_camera" type="uvc_camera_node" ns="/camera" />
+  <node pkg="production" type="objectLocator" name="objectLocator" />
+
+  <!-- Communication from computer to arduino is provided by rosserial -->
+  <!-- <node pkg="rosserial_python" type="serial_node.py" name="arduino_communication" port="/dev/ttyUSB0" /> -->
+
+</launch>
