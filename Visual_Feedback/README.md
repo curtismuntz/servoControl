@@ -17,4 +17,3 @@ Running List of Leveraged Software:
 * uvc-camera
 
 ![Object Tracking](./object_tracking.png)
-Format: ![Alt Text](Object Tracking)
