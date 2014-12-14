@@ -15,3 +15,6 @@ Running List of Leveraged Software:
 * ROS indigo/groovy
 * rosserial
 * uvc-camera
+
+![Object Tracking](./object_tracking.png)
+Format: ![Alt Text](Object Tracking)
