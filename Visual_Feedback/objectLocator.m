@@ -1,6 +1,6 @@
 %Im_raw=(imread(listLeft(i).name));
 %Im=rgb2ycbcr(imread(listLeft(i).name));
-Im_raw=(imread("/home/me/Pictures/Webcam/2014-07-30-211338.jpg"));
+Im_raw=(imread("./orange_ball.jpg"));
 Im=rgb2ycbcr(Im_raw);
 Im_cr=Im(:,:,3);
 Im_y=Im(:,:,1);
